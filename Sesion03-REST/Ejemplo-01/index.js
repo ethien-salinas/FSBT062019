@@ -31,6 +31,13 @@ const routerModel = (req, res) => {
     return Controllers.postModel(req, res)
   }
 }
+const routerTourModel = (req, res) => {
+  if (req.method === 'GET') {
+    return Controllers.renderTourModel(req, res)
+  } else if (req.method === 'POST') {
+    return Controllers.postTourModel(req, res)
+  }
+}
 
 const staticServer = (req, res) => {
   const uri = url.parse(req.url).pathname
@@ -57,6 +64,8 @@ const Router = (req, res) => {
     return routerUser(req, res)
   } else if (req.url === '/users') {
     return routerModel(req, res)
+  } else if (req.url === '/tours') {
+    return routerTourModel(req, res)
   }
   staticServer(req, res)
 }

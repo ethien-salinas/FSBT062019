@@ -44,7 +44,7 @@
   }
   
   #home-cover{
-    background-image: url("http://localhost:3000/static/img/img_cover_home.jpg");
+    background-image: url("http://localhost:4000/static/img/img_cover_home.jpg");
     height: 70vh;
     width: 100vw;
     display: flex;

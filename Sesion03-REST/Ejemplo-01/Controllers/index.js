@@ -2,6 +2,7 @@ const fs = require('fs')
 const Model = require('../models/index')
 
 let Users = []
+let Tours = []
 // Especificar por que se utilizan:
 //   * fs
 //   * module.exports
@@ -30,17 +31,31 @@ const renderModel = (req, res) => {
   res.write(JSON.stringify(Users.map(e => e)))
   res.end()
 }
+const renderTourModel = (req, res) => {
+  res.writeHead(200)
+  JSON.
+  res.write(JSON.stringify(Tours.map(e => e))) // select a BD
+  res.end()
+}
 
 const postModel = (req, res) => {
   let newUser = new Model.User(req.headers.name, req.headers.description, req.headers.age)
-  Users.push(newUser)
-  // console.log(data)
-
+  Users.push(newUser)// insert a la BD
   res.write(JSON.stringify(newUser))
+  res.end()
+}
+const postTourModel = (req, res) => {
+  // console.log(req.headers)
+  // res.write(JSON.stringify(req.headers.type))
+  let newTour = new Model.Tour(req.headers.type, req.headers.pais, req.headers.ruta)
+  Tours.push(newTour)
+  res.write(JSON.stringify(newTour))
   res.end()
 }
 module.exports = {
   renderIndex,
   renderModel,
-  postModel
+  renderTourModel,
+  postModel,
+  postTourModel
 }
